@@ -18,7 +18,7 @@ struct ImageAlbumItem {
   var fetchResult:PHFetchResult<PHAsset>
 }
 
-class SHCImagePickerViewController: UIViewController {
+public class SHCImagePickerViewController: UIViewController {
   
   let tableView = UITableView()
   
@@ -31,7 +31,7 @@ class SHCImagePickerViewController: UIViewController {
   //照片选择完毕后的回调
   var completeHandler:((_ images:[UIImage]?)->())?
   
-  class func show(vc: UIViewController, maxSelected: Int, call:@escaping ((_ images:[UIImage]?)->())) {
+  public class func show(vc: UIViewController, maxSelected: Int, call:@escaping ((_ images:[UIImage]?)->())) {
     let imageVC = SHCImagePickerViewController()
     imageVC.maxSelected = maxSelected
     imageVC.completeHandler = call
@@ -73,16 +73,16 @@ class SHCImagePickerViewController: UIViewController {
     }
   }
   
-  required init?(coder aDecoder: NSCoder) {
+  required public init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
   
-  override func viewDidLoad() {
+  override public func viewDidLoad() {
     super.viewDidLoad()
     buildUI()
   }
   
-  override func viewDidDisappear(_ animated: Bool) {
+  override public func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
     HUD.dismiss()
   }
@@ -170,18 +170,18 @@ extension SHCImagePickerViewController {
 // MARK: - delegate
 // MARK: tableView
 extension SHCImagePickerViewController: UITableViewDelegate, UITableViewDataSource {
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return items.count
   }
   
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+  public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! SHCImagePickerCell
     cell.titleLabel.text = items[indexPath.item].title
     cell.countLabel.text = "(\(items[indexPath.item].fetchResult.count))"
     return cell
   }
   
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+  public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
     guard let cell = tableView.cellForRow(at: indexPath) as? SHCImagePickerCell else { return }
     

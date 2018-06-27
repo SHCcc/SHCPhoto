@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-protocol PhotoBrowserViewDelegate: NSObjectProtocol {
+public protocol PhotoBrowserViewDelegate: NSObjectProtocol {
   /// 实现本方法以返回图片数量
   func numberOfPhotos(in photoBrowser: PhotoBrowserViewController) -> Int
   
@@ -31,7 +31,7 @@ protocol PhotoBrowserViewDelegate: NSObjectProtocol {
 }
 
 /// PhotoBrowserDelegate适配器
-extension PhotoBrowserViewDelegate {
+public extension PhotoBrowserViewDelegate {
   func photoBrowser(_ photoBrowser: PhotoBrowserViewController, highQualityImageForIndex: Int) -> UIImage? {
     return nil
   }
@@ -48,7 +48,7 @@ extension PhotoBrowserViewDelegate {
 }
 
 // MARK: - PhotoBrowserPageControl
-protocol PhotoBrowserPageControlDelegate {
+public protocol PhotoBrowserPageControlDelegate {
   /// 取PageControl，只会取一次
   func pageControlOfPhotoBrowser(_ photoBrowser: PhotoBrowserViewController) -> UIView
   
@@ -62,7 +62,7 @@ protocol PhotoBrowserPageControlDelegate {
   func photoBrowserPageControl(_ pageControl: UIView, didChangedCurrentPage currentPage: Int)
 }
 
-class PhotoBrowserViewController: UIViewController {
+public class PhotoBrowserViewController: UIViewController {
   
   weak var delegate: PhotoBrowserViewDelegate?
   
@@ -136,7 +136,7 @@ class PhotoBrowserViewController: UIViewController {
     presentingVC.present(self, animated: true, completion: nil)
   }
   
-  override func viewDidLoad() {
+  override public func viewDidLoad() {
     super.viewDidLoad()
     // flowLayout
     flowLayout.minimumLineSpacing = photoSpacing
