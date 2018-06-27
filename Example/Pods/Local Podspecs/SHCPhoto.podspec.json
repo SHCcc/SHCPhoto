@@ -15,7 +15,11 @@
     "git": "https://github.com/SHCcc/SHCPhoto.git",
     "tag": "0.1.0"
   },
-  "source_files": "SHCPhoto/**",
+  "source_files": [
+    "SHCPhoto/**",
+    "SHCPhoto/*/**",
+    "SHCPhoto/*/*/**"
+  ],
   "requires_arc": true,
   "pod_target_xcconfig": {
     "SWIFT_VERSION": "4.0"
