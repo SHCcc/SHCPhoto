@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'SHCPhoto_Example' do
+  pod 'SHCPhoto', :path => '../'
+
+  target 'SHCPhoto_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

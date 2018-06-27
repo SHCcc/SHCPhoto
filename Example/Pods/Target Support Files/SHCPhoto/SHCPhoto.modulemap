@@ -1,0 +1,6 @@
+framework module SHCPhoto {
+  umbrella header "SHCPhoto-umbrella.h"
+
+  export *
+  module * { export * }
+}
