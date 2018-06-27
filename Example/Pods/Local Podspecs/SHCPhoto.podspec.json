@@ -1,22 +1,23 @@
 {
   "name": "SHCPhoto",
   "version": "0.1.0",
-  "summary": "A short description of SHCPhoto.",
-  "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/578013836@qq.com/SHCPhoto",
-  "license": {
-    "type": "MIT",
-    "file": "LICENSE"
-  },
+  "summary": "图片选择和图片浏览的类",
+  "description": "提供了图片浏览的放大，缩小，简单的图片选择",
+  "homepage": "https://github.com/SHCcc/SHCPhoto",
+  "license": "MIT",
   "authors": {
-    "578013836@qq.com": "578013836@qq.com"
-  },
-  "source": {
-    "git": "https://github.com/578013836@qq.com/SHCPhoto.git",
-    "tag": "0.1.0"
+    "SHCcc": "578013836@qq.com"
   },
   "platforms": {
     "ios": "8.0"
   },
-  "source_files": "SHCPhoto/Classes/**/*"
+  "source": {
+    "git": "https://github.com/SHCcc/SHCPhoto.git",
+    "tag": "0.1.0"
+  },
+  "source_files": "SHCPhoto/**",
+  "requires_arc": true,
+  "pod_target_xcconfig": {
+    "SWIFT_VERSION": "4.0"
+  }
 }
