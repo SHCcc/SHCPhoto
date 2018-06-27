@@ -1,15 +1,30 @@
 PODS:
-  - SHCPhoto (0.1.0)
+  - Kingfisher (4.8.0)
+  - SHCHUD (1.1.7)
+  - SHCPhoto (0.1.0):
+    - Kingfisher
+    - SHCHUD
+    - SnapKit
+  - SnapKit (4.0.0)
 
 DEPENDENCIES:
   - SHCPhoto (from `../`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Kingfisher
+    - SHCHUD
+    - SnapKit
 
 EXTERNAL SOURCES:
   SHCPhoto:
     :path: "../"
 
 SPEC CHECKSUMS:
-  SHCPhoto: bf78307ff61c9afc544563211adbf7682730806a
+  Kingfisher: 976d828df2b24834c6a3f2fc4d82cdbd26552be1
+  SHCHUD: f5a83cc96285b06308e34266af00365931c99547
+  SHCPhoto: 33e5b722f74ca9c9a5ac121fe15636a2b93dad57
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
 
 PODFILE CHECKSUM: 1bd16be0ed14985ff452044b14998f1a35bf84bd
 

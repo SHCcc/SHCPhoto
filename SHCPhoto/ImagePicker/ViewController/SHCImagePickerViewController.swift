@@ -8,10 +8,11 @@
 
 import UIKit
 import Photos
+import SHCHUD
 
 //相簿列表项
 struct ImageAlbumItem {
-  //相簿名称
+  //相簿名称`
   var title:String?
   //相簿内的资源
   var fetchResult:PHFetchResult<PHAsset>

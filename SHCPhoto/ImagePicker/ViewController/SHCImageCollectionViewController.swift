@@ -8,6 +8,7 @@
 
 import UIKit
 import Photos
+import SHCHUD
 
 class SHCImageCollectionViewController: UIViewController {
   
@@ -88,7 +89,7 @@ extension SHCImageCollectionViewController {
   
   private func buildLayout() {
     collectionView.snp.makeConstraints { (make) in
-      make.top.equalToSuperview().offset(Macro.statusAndNavBarHeight)
+      make.top.equalToSuperview().offset(64)//(Macro.statusAndNavBarHeight)
       make.left.right.equalToSuperview()
       make.bottom.equalTo(bottomView.snp.top)
     }
