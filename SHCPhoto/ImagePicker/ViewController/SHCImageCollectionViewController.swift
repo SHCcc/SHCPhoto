@@ -23,9 +23,7 @@ class SHCImageCollectionViewController: UIViewController {
   var assetGridThumbnailSize: CGSize!
 
   // 最大选择数量
-  var maxSelected = 4 {
-    didSet{ bottomView.maxSelected = maxSelected }
-  }
+  var maxSelected = 4 
   
   //照片选择完毕后的回调
   var completeHandler:((_ images: [UIImage]?)->())?
@@ -95,7 +93,7 @@ extension SHCImageCollectionViewController {
     }
     
     bottomView.snp.makeConstraints { (make) in
-      make.height.equalTo(44)
+      make.height.equalTo(45)
       make.left.right.bottom.equalToSuperview()
     }
   }
@@ -173,6 +171,7 @@ extension SHCImageCollectionViewController: UICollectionViewDelegate, UICollecti
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! SHCImageCollectionViewCell
+    cell.isDisabled = selectCount() > maxSelected
     let asset = assetsFetchResults![indexPath.item]
     option.deliveryMode = .fastFormat
     imageManager.requestImage(for: asset,
@@ -185,9 +184,6 @@ extension SHCImageCollectionViewController: UICollectionViewDelegate, UICollecti
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//    guard let cell = collectionView.cellForItem(at: indexPath) as? SHCImageCollectionViewCell else {
-//      return
-//    }
     if selectCount() > maxSelected {
       collectionView.deselectItem(at: indexPath, animated: false)
     }
@@ -195,9 +191,6 @@ extension SHCImageCollectionViewController: UICollectionViewDelegate, UICollecti
   }
   
   func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-//    guard let cell = collectionView.cellForItem(at: indexPath) as? SHCImageCollectionViewCell else {
-//      return
-//    }
     bottomView.imageCount = self.selectCount()
   }
 }

@@ -11,20 +11,15 @@ import SnapKit
 
 class SHCImageCompleteBottomView: UIView {
   
-  var maxSelected = 4 {
-    didSet{ titleLabel.text = "0/\(maxSelected)" }
-  }
-  
   var imageCount = 0 {
     didSet{
       isUserInteractionEnabled = imageCount != 0
-      titleLabel.text = "\(imageCount)/\(maxSelected)"
+      let countStr = imageCount > 0 ? "(\(imageCount))" : ""
+      completeBtn.setTitle("完成\(countStr)", for: .normal)
     }
   }
   
   private let completeBtn = UIButton()
-  
-  private let titleLabel = UILabel()
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -52,20 +47,21 @@ class SHCImageCompleteBottomView: UIView {
 extension SHCImageCompleteBottomView{
   fileprivate func buildUI() {
     isUserInteractionEnabled = false
+    backgroundColor = UIColor(red: 29/255, green: 33/255, blue: 40/255, alpha: 1)
+    
     addSubview(completeBtn)
-    addSubview(titleLabel)
+    
     buildSubView()
     buildLayout()
   }
   
   private func buildSubView() {
     completeBtn.setTitle("完成", for: .normal)
-    completeBtn.backgroundColor = UIColor.blue
+    completeBtn.backgroundColor = UIColor(red: 74/255, green: 161/255, blue: 23/255, alpha: 1)
+    
     completeBtn.layer.cornerRadius = 5
     completeBtn.layer.masksToBounds = true
-    completeBtn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-    
-    titleLabel.text = "0/4"
+    completeBtn.titleLabel?.font = UIFont.systemFont(ofSize: 13)
   }
   
   private func buildLayout() {
@@ -74,10 +70,6 @@ extension SHCImageCompleteBottomView{
       make.right.equalToSuperview().offset(-15)
       make.height.equalTo(30)
       make.width.equalTo(60)
-    }
-    titleLabel.snp.makeConstraints { (make) in
-      make.centerY.equalToSuperview()
-      make.right.equalTo(completeBtn.snp.left).offset(-10)
     }
   }
 }

@@ -10,15 +10,23 @@ import UIKit
 
 class SHCImageCollectionViewCell: UICollectionViewCell {
   
-  override var isSelected: Bool {
-    didSet {
-      iconView.image = isSelected ? UIImage(named: "btn-select-selected") : UIImage(named: "btn-select-normal")
+  var isDisabled: Bool = false {
+    didSet{
+      grayView.isHidden = (isDisabled && !isSelected) ? false : true
     }
   }
   
-  var imageView = UIImageView()
-  var iconView  = UIImageView()
+  override var isSelected: Bool {
+    didSet {
+      iconView.image = isSelected ? UIImage(named: "btn-add-theme-normal") : UIImage(named: "btn-add-disabled2")
+    }
+  }
   
+  
+  let imageView = UIImageView()
+  let iconView  = UIImageView()
+  private let grayView  = UIView()
+
   override init(frame: CGRect) {
     super.init(frame: frame)
     buildUI()
@@ -33,15 +41,23 @@ extension SHCImageCollectionViewCell {
   fileprivate func buildUI() {
     contentView.addSubview(imageView)
     contentView.addSubview(iconView)
+    contentView.addSubview(grayView)
     
-    iconView.image = UIImage(named: "btn-select-normal")
+    iconView.image = UIImage(named: "btn-add-disabled2")
+    
     imageView.contentMode = .scaleAspectFill
     imageView.clipsToBounds = true
     
+    grayView.isHidden = true
+    grayView.backgroundColor = UIColor.gray
+    grayView.alpha = 0.5
+    
     imageView.frame = self.bounds
+    grayView.frame = self.bounds
     iconView.snp.makeConstraints { (make) in
       make.right.top.equalToSuperview()
       make.width.height.equalTo(25)
     }
+    
   }
 }

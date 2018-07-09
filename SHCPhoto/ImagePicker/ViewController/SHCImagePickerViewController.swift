@@ -12,7 +12,7 @@ import SHCHUD
 
 //相簿列表项
 struct ImageAlbumItem {
-  //相簿名称`
+  //相簿名称
   var title:String?
   //相簿内的资源
   var fetchResult:PHFetchResult<PHAsset>
@@ -35,7 +35,8 @@ public class SHCImagePickerViewController: UIViewController {
     let imageVC = SHCImagePickerViewController()
     imageVC.maxSelected = maxSelected
     imageVC.completeHandler = call
-    let nav = UINavigationController(rootViewController: imageVC)
+//    let nav = UINavigationController(rootViewController: imageVC)
+    let nav = SHCPhotoNavigation(rootViewController: imageVC)
     vc.present(nav, animated: true, completion: nil)
   }
   
