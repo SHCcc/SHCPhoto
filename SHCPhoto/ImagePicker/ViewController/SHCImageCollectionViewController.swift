@@ -73,7 +73,8 @@ extension SHCImageCollectionViewController {
     let scale = UIScreen.main.scale + 3
     assetGridThumbnailSize = CGSize(width: width * scale,
                                     height: width * scale)
-    
+//    collectionView.contentSize = CGSize(width: 0, height: 1000)
+//    collectionView.bounces = true
     collectionView.delegate = self
     collectionView.dataSource = self
     collectionView.allowsMultipleSelection = true
@@ -133,7 +134,13 @@ extension SHCImageCollectionViewController {
   
   /// 刷新没有选中的cell
   func reloadNoSelectCell() {
-    collectionView.reloadItems(at: noSelectIndexPath())
+    let items = noSelectIndexPath()
+    UIView.setAnimationsEnabled(false)
+    collectionView.performBatchUpdates({
+      collectionView.reloadItems(at: items)
+    }) { (true) in
+      UIView.setAnimationsEnabled(true)
+    }
   }
   
   /// 获取选中数量
@@ -152,7 +159,6 @@ extension SHCImageCollectionViewController {
       }
       return item1
     }
-    
     return items
   }
   
@@ -206,6 +212,7 @@ extension SHCImageCollectionViewController: UICollectionViewDelegate, UICollecti
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     if selectCount() > maxSelected {
       collectionView.deselectItem(at: indexPath, animated: false)
+      return
     }
     
     if selectCount() == maxSelected { reloadNoSelectCell() }

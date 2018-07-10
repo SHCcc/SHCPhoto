@@ -19,7 +19,6 @@ class SHCImageCollectionViewCell: UICollectionViewCell {
   override var isSelected: Bool {
     didSet {
       iconView.image = isSelected ? UIImage(named: "btn-add-theme-normal") : UIImage(named: "btn-add-disabled2")
-//      grayView.isHidden = isSelected
     }
   }
   

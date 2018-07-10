@@ -39,7 +39,7 @@ class ViewController: UIViewController {
     collectionView.dataSource = self
     collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
     collectionView.snp.makeConstraints { (make) in
-      make.top.equalToSuperview().offset(100)
+      make.top.equalToSuperview().offset(30)
       make.left.right.equalToSuperview()
       make.height.equalTo(450)
     }
