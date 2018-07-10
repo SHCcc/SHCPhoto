@@ -27,7 +27,7 @@ class SHCImageCollectionViewController: UIViewController {
   
   //照片选择完毕后的回调
   var completeHandler:((_ images: [UIImage]?)->())?
-
+  
   private var completeBtnlock = false
   
   private let layout = UICollectionViewFlowLayout()
@@ -131,9 +131,29 @@ extension SHCImageCollectionViewController {
     imageManager.stopCachingImagesForAllAssets()
   }
   
+  /// 刷新没有选中的cell
+  func reloadNoSelectCell() {
+    collectionView.reloadItems(at: noSelectIndexPath())
+  }
+  
   /// 获取选中数量
   func selectCount() -> Int{
     return collectionView.indexPathsForSelectedItems?.count ?? 0
+  }
+  
+  /// 没有选中的indexPath
+  func noSelectIndexPath() -> [IndexPath] {
+    var items = collectionView.indexPathsForVisibleItems
+    let selects = collectionView.indexPathsForSelectedItems ?? [IndexPath]()
+    
+    items = items.compactMap { (item1) -> IndexPath? in
+      for item2 in selects {
+        if item1.item == item2.item { return nil }
+      }
+      return item1
+    }
+    
+    return items
   }
   
   /// 获取图片
@@ -171,7 +191,7 @@ extension SHCImageCollectionViewController: UICollectionViewDelegate, UICollecti
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! SHCImageCollectionViewCell
-    cell.isDisabled = selectCount() > maxSelected
+    cell.isDisabled = selectCount() >= maxSelected
     let asset = assetsFetchResults![indexPath.item]
     option.deliveryMode = .fastFormat
     imageManager.requestImage(for: asset,
@@ -187,11 +207,16 @@ extension SHCImageCollectionViewController: UICollectionViewDelegate, UICollecti
     if selectCount() > maxSelected {
       collectionView.deselectItem(at: indexPath, animated: false)
     }
+    
+    if selectCount() == maxSelected { reloadNoSelectCell() }
+    
     bottomView.imageCount = self.selectCount()
   }
   
   func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
     bottomView.imageCount = self.selectCount()
+    
+    if selectCount() == maxSelected - 1 { reloadNoSelectCell() }
   }
 }
 
