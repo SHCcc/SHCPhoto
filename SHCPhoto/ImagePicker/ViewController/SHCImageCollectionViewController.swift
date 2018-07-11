@@ -15,13 +15,15 @@ class SHCImageCollectionViewController: UIViewController {
   // 图片资源
   var assetsFetchResults: PHFetchResult<PHAsset>?
   
+  var imageDict = [String : UIImage]()
+  
   // 图片缓存管理
   var imageManager = PHCachingImageManager()
   let option = PHImageRequestOptions()
-
+  
   // 缩略图size
   var assetGridThumbnailSize: CGSize!
-
+  
   // 最大选择数量
   var maxSelected = 4 
   
@@ -50,9 +52,9 @@ extension SHCImageCollectionViewController {
   fileprivate func buildUI() {
     view.addSubview(collectionView)
     view.addSubview(bottomView)
-
+    
     automaticallyAdjustsScrollViewInsets = false
-
+    
     view.backgroundColor = UIColor.white
     navigationItem.rightBarButtonItem = UIBarButtonItem(title: "取消",
                                                         style: .plain,
@@ -73,8 +75,8 @@ extension SHCImageCollectionViewController {
     let scale = UIScreen.main.scale + 3
     assetGridThumbnailSize = CGSize(width: width * scale,
                                     height: width * scale)
-//    collectionView.contentSize = CGSize(width: 0, height: 1000)
-//    collectionView.bounces = true
+    //    collectionView.contentSize = CGSize(width: 0, height: 1000)
+    //    collectionView.bounces = true
     collectionView.delegate = self
     collectionView.dataSource = self
     collectionView.allowsMultipleSelection = true
@@ -186,6 +188,10 @@ extension SHCImageCollectionViewController {
       }
     }
   }
+  
+  func setImage(item: String) {
+    
+  }
 }
 
 // MARK: - dalegate
@@ -198,14 +204,22 @@ extension SHCImageCollectionViewController: UICollectionViewDelegate, UICollecti
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! SHCImageCollectionViewCell
     cell.isDisabled = selectCount() >= maxSelected
+    
     let asset = assetsFetchResults![indexPath.item]
     option.deliveryMode = .fastFormat
-    imageManager.requestImage(for: asset,
-                              targetSize: assetGridThumbnailSize,
-                              contentMode: .aspectFill,
-                              options: option) { (image, nfo) in
-                                cell.imageView.image = image
+    
+    if imageDict["\(indexPath.item)"] != nil {
+      cell.imageView.image = imageDict["\(indexPath.item)"]!
+    }else {
+      imageManager.requestImage(for: asset,
+                                targetSize: assetGridThumbnailSize,
+                                contentMode: .aspectFill,
+                                options: option) { (image, info) in
+                                  self.imageDict["\(indexPath.item)"] = image
+                                  cell.imageView.image = image
+      }
     }
+    
     return cell
   }
   
