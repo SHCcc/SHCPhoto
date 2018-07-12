@@ -50,12 +50,12 @@ class SHCImageCollectionViewController: UIViewController {
 // MARK: - UI
 extension SHCImageCollectionViewController {
   fileprivate func buildUI() {
+    automaticallyAdjustsScrollViewInsets = true
+
     view.addSubview(collectionView)
     view.addSubview(bottomView)
-    
-    automaticallyAdjustsScrollViewInsets = false
-    
     view.backgroundColor = UIColor.white
+    
     navigationItem.rightBarButtonItem = UIBarButtonItem(title: "取消",
                                                         style: .plain,
                                                         target: self,
@@ -66,22 +66,22 @@ extension SHCImageCollectionViewController {
   }
   
   private func buildSubView() {
-    layout.minimumInteritemSpacing = 1
-    layout.minimumLineSpacing = 1
-    let width = UIScreen.main.bounds.width / 4 - 1
+    layout.minimumInteritemSpacing = 5
+    layout.minimumLineSpacing = 5
+    let width = (UIScreen.main.bounds.width) / 4 - 5
     layout.itemSize = CGSize(width: width,
                              height: width)
     
     let scale = UIScreen.main.scale + 3
     assetGridThumbnailSize = CGSize(width: width * scale,
                                     height: width * scale)
-    //    collectionView.contentSize = CGSize(width: 0, height: 1000)
-    //    collectionView.bounces = true
     collectionView.delegate = self
     collectionView.dataSource = self
+    collectionView.alwaysBounceVertical = true
     collectionView.allowsMultipleSelection = true
     collectionView.backgroundColor = UIColor.white
-    collectionView.register(SHCImageCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+    collectionView.register(SHCImageCollectionViewCell.self,
+                            forCellWithReuseIdentifier: "cell")
     
     let tap = UITapGestureRecognizer(target: self,
                                      action: #selector(complete))
@@ -90,8 +90,8 @@ extension SHCImageCollectionViewController {
   
   private func buildLayout() {
     collectionView.snp.makeConstraints { (make) in
-      make.top.equalToSuperview().offset(64)//(Macro.statusAndNavBarHeight)
-      make.left.right.equalToSuperview()
+      make.top.equalToSuperview()
+      make.right.left.equalToSuperview()
       make.bottom.equalTo(bottomView.snp.top)
     }
     
@@ -188,10 +188,6 @@ extension SHCImageCollectionViewController {
       }
     }
   }
-  
-  func setImage(item: String) {
-    
-  }
 }
 
 // MARK: - dalegate
@@ -205,12 +201,11 @@ extension SHCImageCollectionViewController: UICollectionViewDelegate, UICollecti
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! SHCImageCollectionViewCell
     cell.isDisabled = selectCount() >= maxSelected
     
-    let asset = assetsFetchResults![indexPath.item]
-    option.deliveryMode = .fastFormat
-    
     if imageDict["\(indexPath.item)"] != nil {
       cell.imageView.image = imageDict["\(indexPath.item)"]!
     }else {
+      let asset = assetsFetchResults![indexPath.item]
+      option.deliveryMode = .fastFormat
       imageManager.requestImage(for: asset,
                                 targetSize: assetGridThumbnailSize,
                                 contentMode: .aspectFill,
@@ -239,5 +234,7 @@ extension SHCImageCollectionViewController: UICollectionViewDelegate, UICollecti
     
     if selectCount() == maxSelected - 1 { reloadNoSelectCell() }
   }
+  
 }
+
 
