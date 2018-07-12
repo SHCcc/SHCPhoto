@@ -52,10 +52,8 @@ extension SHCPhotoNavigation{
     }else {
       if barBackgroundView.subviews.count < 2 { return }
       let backgroundEffectView = barBackgroundView.subviews[1]
+      backgroundEffectView.alpha = alpha
       
-      barBackgroundView.backgroundColor = UIColor.black
-      barBackgroundView.alpha = alpha
-      backgroundEffectView.alpha = effectViewalpha
     }
 
   }
