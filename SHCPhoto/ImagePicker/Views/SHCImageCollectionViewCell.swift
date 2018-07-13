@@ -19,6 +19,14 @@ class SHCImageCollectionViewCell: UICollectionViewCell {
   override var isSelected: Bool {
     didSet {
       iconView.image = isSelected ? UIImage(named: "btn-add-theme-normal") : UIImage(named: "btn-add-disabled2")
+      if !isSelected { return }
+      UIView.animate(withDuration: 0.1, animations: {
+        self.iconView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+      }) { (Bool) in
+        UIView.animate(withDuration: 0.2, animations: {
+          self.iconView.transform = CGAffineTransform(scaleX: 1, y: 1)
+        })
+      }
     }
   }
   
@@ -55,8 +63,9 @@ extension SHCImageCollectionViewCell {
     imageView.frame = self.bounds
     grayView.frame = self.bounds
     iconView.snp.makeConstraints { (make) in
-      make.right.top.equalToSuperview()
-      make.width.height.equalTo(25)
+      make.top.equalToSuperview().offset(2)
+      make.right.equalToSuperview().offset(-2)
+      make.width.height.equalTo(23)
     }
     
   }

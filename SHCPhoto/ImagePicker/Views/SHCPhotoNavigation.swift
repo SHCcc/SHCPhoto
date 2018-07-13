@@ -42,7 +42,7 @@ extension SHCPhotoNavigation{
     self.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
   }
   
-  func setAlphe(alpha: CGFloat, effectViewalpha : CGFloat = 0) {
+  func setAlphe(alpha: CGFloat) {
     guard let barBackgroundView = self.navigationBar.subviews.first else { return }
     let backgroundImageView = barBackgroundView.subviews.first as? UIImageView
 
@@ -53,18 +53,6 @@ extension SHCPhotoNavigation{
       if barBackgroundView.subviews.count < 2 { return }
       let backgroundEffectView = barBackgroundView.subviews[1]
       backgroundEffectView.alpha = alpha
-      
     }
-
-  }
-}
-
-extension SHCPhotoNavigation {
-  @objc func backEvent() {
-    
-  }
-  
-  @objc func cancelEvent() {
-    
   }
 }
