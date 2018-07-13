@@ -22,6 +22,7 @@
 		1C762FBF6B1B33FBD9E345AE471400B5 /* ConstraintInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FCDFBB08EE91C8D75535AAE1038C58 /* ConstraintInsets.swift */; };
 		1E837DEE6CE1ED57386A1F76E35F81DE /* ConstraintAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3156ACFF6B114545808E98D18C201262 /* ConstraintAttributes.swift */; };
 		1EEDF031CFDA1FAA983FF3E048894AF2 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6B95080B75277AA8CC4398E85E6432 /* CFNetwork.framework */; };
+		20E672A920F8A86B00F30DC7 /* SHCEmpyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E672A820F8A86B00F30DC7 /* SHCEmpyView.swift */; };
 		226C0DC3164BE1B2498740D7CDA08612 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81FCD69C5AE7A33779C4FA7C14CB3286 /* Foundation.framework */; };
 		2283375C0C99789CF47EEDA0CE9D3D80 /* ImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED792637FA77347FE92891C96EB68F6B /* ImageProcessor.swift */; };
 		2374E6734893166FB42FDEB86BBC4191 /* ConstraintDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AE29389CAD3DE1CE74EEEED8D249FA /* ConstraintDSL.swift */; };
@@ -212,6 +213,7 @@
 		183E957854CBD24885097EC333AA9A5A /* ConstraintItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintItem.swift; path = Source/ConstraintItem.swift; sourceTree = "<group>"; };
 		1E769225A0EEF1FEECFABBF5A852994A /* ConstraintOffsetTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintOffsetTarget.swift; path = Source/ConstraintOffsetTarget.swift; sourceTree = "<group>"; };
 		1EA989DAA3DAE51B38EB92C812E85D27 /* HUD.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HUD.swift; path = SHCHUD/HUD.swift; sourceTree = "<group>"; };
+		20E672A820F8A86B00F30DC7 /* SHCEmpyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHCEmpyView.swift; sourceTree = "<group>"; };
 		21C148727AAF6938B33756F1DFA36E89 /* ConstraintConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintConfig.swift; path = Source/ConstraintConfig.swift; sourceTree = "<group>"; };
 		22D573FDA3EEA93797B79A7394B5B604 /* Pods-SHCPhoto_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SHCPhoto_Tests-resources.sh"; sourceTree = "<group>"; };
 		26368DCA08E127E2AD59727C33456559 /* ScaleAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ScaleAnimator.swift; sourceTree = "<group>"; };
@@ -702,6 +704,7 @@
 			isa = PBXGroup;
 			children = (
 				7541A721E6A1DFBC2D1B8088B30BCBFB /* SHCImageCollectionViewCell.swift */,
+				20E672A820F8A86B00F30DC7 /* SHCEmpyView.swift */,
 				31DCC155E8C5A309355B541D9BB79183 /* SHCImageCompleteBottomView.swift */,
 				4B9CF1E40F0FAC0262A3AD60CF9631FC /* SHCPhotoNavigation.swift */,
 				0170C0963870A0312764C0FC17127054 /* SHCImagePickerCell.swift */,
@@ -1065,6 +1068,7 @@
 				CEEB7C897409C08DF53289E307AB987C /* String+MD5.swift in Sources */,
 				CE38861F1268294930C074FC3F807E55 /* ThreadHelper.swift in Sources */,
 				FED97351EC4705507DAB175106B819C8 /* UIButton+Kingfisher.swift in Sources */,
+				20E672A920F8A86B00F30DC7 /* SHCEmpyView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
