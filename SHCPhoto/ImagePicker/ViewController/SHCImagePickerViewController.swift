@@ -35,7 +35,6 @@ public class SHCImagePickerViewController: UIViewController {
     let imageVC = SHCImagePickerViewController()
     imageVC.maxSelected = maxSelected
     imageVC.completeHandler = call
-//    let nav = UINavigationController(rootViewController: imageVC)
     let nav = SHCPhotoNavigation(rootViewController: imageVC)
     vc.present(nav, animated: true, completion: nil)
   }
@@ -43,7 +42,11 @@ public class SHCImagePickerViewController: UIViewController {
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     PHPhotoLibrary.requestAuthorization { (status) in
-      if status != .authorized { return }
+      
+      if status != .authorized {
+        self.requestPhoto()
+        return
+      }
       
       let smartOptions = PHFetchOptions()
       let smartAlbums = PHAssetCollection.fetchAssetCollections(with: .smartAlbum,
@@ -91,15 +94,19 @@ public class SHCImagePickerViewController: UIViewController {
 
 // MARK: - UI
 extension SHCImagePickerViewController {
-  fileprivate func buildUI() {
-    view.backgroundColor = UIColor.white
-    view.addSubview(tableView)
-        
+  fileprivate func buildNavUI() {
     navigationItem.title = "相册"
     navigationItem.rightBarButtonItem = UIBarButtonItem(title: "取消",
                                                         style: .plain,
                                                         target: self,
                                                         action: #selector(cancel))
+  }
+  
+  fileprivate func buildUI() {
+    view.backgroundColor = UIColor.white
+    view.addSubview(tableView)
+        
+    buildNavUI()
     buildSubView()
     buildLayout()
   }
@@ -166,6 +173,10 @@ extension SHCImagePickerViewController {
     }
   }
 
+  func requestPhoto() {
+    "请在iPhone的“设置-隐私-照片”选项中，允许膳小二访问你的手机相册。"
+    
+  }
 }
 
 // MARK: - delegate
