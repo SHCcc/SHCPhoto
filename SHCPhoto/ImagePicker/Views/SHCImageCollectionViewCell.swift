@@ -18,8 +18,8 @@ class SHCImageCollectionViewCell: UICollectionViewCell {
   
   override var isSelected: Bool {
     didSet {
-      iconView.image = isSelected ? UIImage(named: "btn-add-theme-normal") : UIImage(named: "btn-add-disabled2")
-      if !isSelected { return }
+      iconView.image = isSelected ? getImage(named: "btn_check_selected_40") : getImage(named: "btn_check_normal_40")
+      if !isSelected || isDisabled { return }
       UIView.animate(withDuration: 0.1, animations: {
         self.iconView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
       }) { (Bool) in
@@ -51,7 +51,7 @@ extension SHCImageCollectionViewCell {
     contentView.addSubview(iconView)
     contentView.addSubview(grayView)
     
-    iconView.image = UIImage(named: "btn-add-disabled2")
+    iconView.image = getImage(named: "btn_check_normal_40")
     
     imageView.contentMode = .scaleAspectFill
     imageView.clipsToBounds = true
@@ -68,5 +68,19 @@ extension SHCImageCollectionViewCell {
       make.width.height.equalTo(23)
     }
     
+  }
+}
+
+extension SHCImageCollectionViewCell {
+  func bundle() ->Bundle {
+      guard let path = Bundle(for: SHCImageCollectionViewCell.self).path(forResource: "Photo", ofType: "bundle") else { return Bundle() }
+      guard let bundle = Bundle(path: path) else { return Bundle() }
+      return bundle
+  }
+
+  func getImage(named: String) -> UIImage? {
+    return UIImage(named: named,
+                   in: bundle(),
+                   compatibleWith: nil)
   }
 }

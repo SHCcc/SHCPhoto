@@ -174,7 +174,7 @@ extension SHCImagePickerViewController {
   }
 
   func requestPhoto() {
-    "请在iPhone的“设置-隐私-照片”选项中，允许膳小二访问你的手机相册。"
+    
     
   }
 }

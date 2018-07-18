@@ -20,6 +20,11 @@
     "SHCPhoto/*/**",
     "SHCPhoto/*/*/**"
   ],
+  "resource_bundles": {
+    "Photo": [
+      "Photo.bundle/*.png"
+    ]
+  },
   "requires_arc": true,
   "pod_target_xcconfig": {
     "SWIFT_VERSION": "4.0"

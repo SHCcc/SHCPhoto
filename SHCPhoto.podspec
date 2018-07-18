@@ -12,7 +12,8 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/SHCcc/SHCPhoto.git', :tag => s.version.to_s }
 
   s.source_files = ['SHCPhoto/**','SHCPhoto/*/**','SHCPhoto/*/*/**']
-
+  s.resource_bundles = { 'Photo' => ['Photo.bundle/*.png']}
+  
   s.requires_arc = true
   s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.0' }
   
