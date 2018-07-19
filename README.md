@@ -1,29 +1,24 @@
 # SHCPhoto
 
-[![CI Status](https://img.shields.io/travis/578013836@qq.com/SHCPhoto.svg?style=flat)](https://travis-ci.org/578013836@qq.com/SHCPhoto)
-[![Version](https://img.shields.io/cocoapods/v/SHCPhoto.svg?style=flat)](https://cocoapods.org/pods/SHCPhoto)
-[![License](https://img.shields.io/cocoapods/l/SHCPhoto.svg?style=flat)](https://cocoapods.org/pods/SHCPhoto)
-[![Platform](https://img.shields.io/cocoapods/p/SHCPhoto.svg?style=flat)](https://cocoapods.org/pods/SHCPhoto)
-
-## Example
-
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-## Requirements
-
-## Installation
-
-SHCPhoto is available through [CocoaPods](https://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
-```ruby
-pod 'SHCPhoto'
-```
-
-## Author
-
-578013836@qq.com, 578013836@qq.com
-
-## License
-
-SHCPhoto is available under the MIT license. See the LICENSE file for more info.
+  图片流浪、图片选择
+  
+  
+  ### 功能
+  
+  
+  ### 使用
+  - 图片选择
+  ```
+  vc: 控制器
+  maxSelected: 图片选择的最大值
+  call: 图片回调
+  SHCImagePickerViewController.show(vc: UIViewController, maxSelected: Int, call:@escaping ((_ images:[UIImage]?)->()))
+  ```
+  
+  - 图片流浪
+  ```
+  vc: 控制器
+  maxSelected: 图片选择的最大值
+  call: 图片回调
+  SHCImagePickerViewController.show(vc: UIViewController, maxSelected: Int, call:@escaping ((_ images:[UIImage]?)->()))
+  ```
