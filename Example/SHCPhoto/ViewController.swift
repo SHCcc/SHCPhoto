@@ -125,7 +125,6 @@ extension ViewController: PhotoBrowserViewDelegate{
   
   /// 长按时回调。可选
   func photoBrowser(_ photoBrowser: PhotoBrowserViewController, didLongPressForIndex index: Int, image: UIImage) {
-    
   }
 
 }

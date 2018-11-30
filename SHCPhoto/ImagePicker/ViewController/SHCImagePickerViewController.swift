@@ -199,6 +199,7 @@ extension SHCImagePickerViewController: UITableViewDelegate, UITableViewDataSour
     
     let vc = SHCImageCollectionViewController()
     vc.assetsFetchResults = items[indexPath.item].fetchResult
+    vc.maxSelected = self.maxSelected
     vc.title = cell.titleLabel.text
     vc.completeHandler = completeHandler
     navigationController?.pushViewController(vc, animated: true)
