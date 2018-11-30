@@ -1,11 +1,11 @@
 PODS:
-  - Kingfisher (4.8.0)
-  - SHCHUD (1.1.7)
+  - Kingfisher (4.10.1)
+  - SHCHUD (1.1.8)
   - SHCPhoto (0.1.0):
     - Kingfisher
     - SHCHUD
     - SnapKit
-  - SnapKit (4.0.0)
+  - SnapKit (4.2.0)
 
 DEPENDENCIES:
   - SHCPhoto (from `../`)
@@ -21,10 +21,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Kingfisher: 976d828df2b24834c6a3f2fc4d82cdbd26552be1
-  SHCHUD: f5a83cc96285b06308e34266af00365931c99547
+  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
+  SHCHUD: 70867f5c97dc560b12de03b972592b130d54e1b9
   SHCPhoto: 9e85850a1ddccdd5897aeba312afa2deb9c48257
-  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
 
 PODFILE CHECKSUM: 1bd16be0ed14985ff452044b14998f1a35bf84bd
 
