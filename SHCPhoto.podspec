@@ -11,12 +11,11 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '8.0'
   s.source           = { :git => 'https://github.com/SHCcc/SHCPhoto.git', :tag => s.version.to_s }
 
+  s.requires_arc = true
   s.source_files = ['SHCPhoto/**','SHCPhoto/*/**','SHCPhoto/*/*/**']
   s.resource_bundles = { 'Photo' => 'SHCPhoto/Photo.bundle/*.png'}
-
-  s.requires_arc = true
-  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.0' }
   
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.0' }
   s.dependency 'Kingfisher'
   s.dependency 'SnapKit'
   s.dependency 'SHCHUD'
