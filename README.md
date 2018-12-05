@@ -10,10 +10,10 @@
 
 ```
 - 图片浏览器
- - 图片的浏览
- - 图片的放大
+    - 图片的浏览
+    - 图片的放大
 - 图片选择器
- - 图片的选择
+    - 图片的选择
 ```
 
 
@@ -22,14 +22,14 @@
 
 - 创建方式
 
-  ```
+```
   - vc: 控制器
   - maxSelected: 图片选择的最大值
   - call: 图片回调
   SHCImagePickerViewController.show(vc: UIViewController, 
-  									maxSelected: Int, 
-									call:@escaping ((_ images:[UIImage]?)->()))
-  ```
+                                    maxSelected: Int, 
+                                    call:@escaping ((_ images:[UIImage]?)->()))
+```
 
 ### 图片浏览
 
@@ -40,7 +40,7 @@
 - delegate: 代理
 - index: 图片的数量
 let vc = PhotoBrowserViewController(viewCotroller: UIViewController,
-									delegate: PhotoBrowserViewDelegate)
+                                    delegate: PhotoBrowserViewDelegate)
 vc.show(index: Int)
 ```
 - 实现代理
